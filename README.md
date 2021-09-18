@@ -1,2 +1,2 @@
 # expense_tracker
-An expense tracker app using Pandas library
+An expense tracker app using Pandas library and Django. This web app display a form with the fields: Amount of money expensed, the caterogy(Food, travel, shopping, etc), date and description. When you submit a form it will show you all the expenses.There is an issue, the dataframe doesn't update neither the database when you submit the form, just when you insert the data in the admin account. If you remove the url from the action field in the form tag in the tracker_form.html it will give an error but it will update the database. I don't know why this is happening.
