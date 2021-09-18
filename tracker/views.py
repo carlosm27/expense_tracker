@@ -6,11 +6,17 @@ from .models import Expense_data
 import pandas as pd
 # Create your views here.
 
-class Expenses(CreateView):
-    model=Expense_data
-    fields = ['amount', 'category', 'date', 'description']
-    context_object_name = 'expenses'
-    template_name = 'tracker/tracker_form.html'
+def expenses_form(request):
+    expenses=Expense_data.objects.all()
+    form=ExpenseForm()
+
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("expenses-dataframe")
+    context={'expenses': expenses, 'form':form}
+    return render(request,'tracker/tracker_form.html',context)
 
 
 
